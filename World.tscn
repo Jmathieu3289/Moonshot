@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Landscape/Landscape.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Moon/Moon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Spaceman/Spaceman.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Font/Abel-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="ProceduralSky" id=1]
+radiance_size = 4
+sky_top_color = Color( 0.0470588, 0.0941176, 0.223529, 1 )
+sky_horizon_color = Color( 0.0117647, 0.00784314, 0.054902, 1 )
+sky_curve = 0.475022
+ground_bottom_color = Color( 0.0117647, 0.00784314, 0.054902, 1 )
+ground_horizon_color = Color( 0.0117647, 0.00784314, 0.054902, 1 )
+ground_curve = 0.787932
+sun_latitude = 12.0
+sun_energy = 0.1
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+
+[sub_resource type="ViewportTexture" id=4]
+viewport_path = NodePath("Title/Viewport")
+
+[sub_resource type="DynamicFont" id=3]
+size = 200
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="World" type="Spatial"]
+
+[node name="Moon" parent="." instance=ExtResource( 2 )]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 25, -80 )
+
+[node name="Landscape" parent="." instance=ExtResource( 1 )]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.66126, 0 )
+light_color = Color( 0.909804, 0.321569, 0, 1 )
+light_energy = 2.0
+omni_range = 10.0
+omni_attenuation = 2.73208
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 11.008 )
+current = true
+fov = 40.0
+
+[node name="Spaceman" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.021789, 0, -0.249049, 0, 0.25, 0, 0.249049, 0, -0.021789, -1.2, 4.7, 0 )
+
+[node name="Title" type="Sprite3D" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.25, 7.5, -12 )
+flip_v = true
+texture = SubResource( 4 )
+
+[node name="Viewport" type="Viewport" parent="Title"]
+size = Vector2( 1200, 1200 )
+transparent_bg = true
+msaa = 2
+
+[node name="Label" type="Label" parent="Title/Viewport"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 3 )
+text = "MOON   SHOT"
+align = 1
+valign = 1
+uppercase = true
