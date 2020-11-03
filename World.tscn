@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Landscape/Landscape.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Moon/Moon.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Camera.cs" type="Script" id=12]
 [ext_resource path="res://Spaceship/Cargo.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Spaceship/Fins.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Squirrel/Squirrel.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Spaceship/Tip.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Spaceship/Booster.tscn" type="PackedScene" id=17]
 
@@ -248,10 +249,12 @@ transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 25, -80 )
 environment = SubResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 11.008 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 11.008 )
 current = true
 fov = 40.0
 script = ExtResource( 12 )
+horizontalDistance = 10.0
+verticalDistance = 3.0
 
 [node name="Title" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91953, 7.5, -12 )
@@ -328,6 +331,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.180854, 0 )
 [node name="Cargo" parent="Environment/Spaceship Parts" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75298, 0 )
 
+[node name="SquirrelSpots" type="Spatial" parent="Environment"]
+
+[node name="Squirrel" parent="Environment/SquirrelSpots" instance=ExtResource( 15 )]
+transform = Transform( 0.0474421, 0, 0.0157874, 0.00336401, 0.0488517, -0.010109, -0.0154249, 0.0106541, 0.0463526, -6.48854, 7.66341, -4.72738 )
+
+[node name="Spot1" type="Position3D" parent="Environment/SquirrelSpots"]
+transform = Transform( 0.948841, 8.69483e-06, 0.315755, 0.0672756, 0.977033, -0.202189, -0.308505, 0.213088, 0.927048, -6.489, 7.663, -4.727 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeOut = SubResource( 9 )
 anims/Intro = SubResource( 5 )
@@ -350,7 +361,7 @@ volume_db = -5.0
 autoplay = true
 
 [node name="StartMenu" type="Control" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.49829
