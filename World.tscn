@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Landscape/Landscape.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Moon/Moon.tscn" type="PackedScene" id=2]
@@ -12,11 +12,9 @@
 [ext_resource path="res://Landscape/378048__bajko__sfx-amb-forest-winter-night.wav" type="AudioStream" id=10]
 [ext_resource path="res://Landscape/366818__michaelvelo__crickets-indoors.wav" type="AudioStream" id=11]
 [ext_resource path="res://Camera.cs" type="Script" id=12]
-[ext_resource path="res://Spaceship/Cargo.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Spaceship/Fins.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Spaceship/Spaceship.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Squirrel/Squirrel.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Spaceship/Tip.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Spaceship/Booster.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Firefly/Firefly.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ProceduralSky" id=1]
 radiance_size = 4
@@ -44,7 +42,7 @@ use_filter = true
 extra_spacing_char = 15
 font_data = ExtResource( 4 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=5]
 resource_name = "FadeOut"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Title:opacity")
@@ -95,8 +93,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Intro"
+[sub_resource type="Animation" id=6]
 length = 30.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera:translation")
@@ -159,8 +156,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Intro Debug"
+[sub_resource type="Animation" id=7]
 length = 30.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera:translation")
@@ -223,7 +219,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 64
 outline_color = Color( 0.996078, 0.988235, 0.94902, 1 )
 use_mipmaps = true
@@ -231,7 +227,7 @@ use_filter = true
 extra_spacing_char = 5
 font_data = ExtResource( 4 )
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=9]
 flags_vertex_lighting = true
 albedo_color = Color( 0.364706, 0.364706, 0.364706, 1 )
 metallic = 1.0
@@ -257,7 +253,7 @@ horizontalDistance = 10.0
 verticalDistance = 3.0
 
 [node name="Title" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91953, 7.5, -12 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.54052, 7.5, -12 )
 flip_v = true
 opacity = 0.0
 texture = SubResource( 3 )
@@ -272,7 +268,7 @@ usage = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 4 )
-text = "THE LONG WAY HOME"
+text = "FAR FROM HOME"
 valign = 1
 uppercase = true
 
@@ -285,8 +281,8 @@ transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0534947, 3.98004, 
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0.213979, 2.72489, 0.366189 )
 light_color = Color( 0.627451, 0.301961, 0.0156863, 1 )
 light_energy = 1.97
-omni_range = 45.4
-omni_attenuation = 2.73208
+omni_range = 20.0
+omni_attenuation = 3.36358
 script = ExtResource( 6 )
 
 [node name="Trees" type="Spatial" parent="Environment"]
@@ -316,20 +312,28 @@ transform = Transform( 1, 0, 0, 0, 0.995341, -0.0964189, 0, 0.0964189, 0.995341,
 light_color = Color( 0.713726, 0.866667, 0.847059, 1 )
 light_energy = 0.05
 
-[node name="Spaceship Parts" type="Spatial" parent="Environment"]
-transform = Transform( 0.956325, 0, -0.292305, 0, 1, 0, 0.292305, 0, 0.956325, 1.90035, 5.76735, -3.40197 )
+[node name="Fireflies" type="Spatial" parent="Environment"]
 
-[node name="Booster" parent="Environment/Spaceship Parts" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86869, 0 )
+[node name="Firefly" parent="Environment/Fireflies" instance=ExtResource( 18 )]
+transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -6.66386, 4.72773, -1.41432 )
 
-[node name="Tip" parent="Environment/Spaceship Parts" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.752, 0 )
+[node name="Firefly2" parent="Environment/Fireflies" instance=ExtResource( 18 )]
+transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -12.3825, 3.69789, 2.40776 )
 
-[node name="Fins" parent="Environment/Spaceship Parts" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.180854, 0 )
+[node name="Firefly3" parent="Environment/Fireflies" instance=ExtResource( 18 )]
+transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -6.90078, 4.36162, 7.04946 )
 
-[node name="Cargo" parent="Environment/Spaceship Parts" instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75298, 0 )
+[node name="Firefly4" parent="Environment/Fireflies" instance=ExtResource( 18 )]
+transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 9.29117, 4.78874, 7.04946 )
+
+[node name="Firefly5" parent="Environment/Fireflies" instance=ExtResource( 18 )]
+transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 9.29117, 4.78874, -9.68041 )
+
+[node name="Firefly6" parent="Environment/Fireflies" instance=ExtResource( 18 )]
+transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 4.49172, 5.43139, 12.1537 )
+
+[node name="Spaceship" parent="Environment" instance=ExtResource( 13 )]
+transform = Transform( 0.930565, 0, -0.366128, 0, 1, 0, 0.366128, 0, 0.930564, 10.1663, 5.64072, -0.0675516 )
 
 [node name="SquirrelSpots" type="Spatial" parent="Environment"]
 
@@ -340,9 +344,9 @@ transform = Transform( 0.0474421, 0, 0.0157874, 0.00336401, 0.0488517, -0.010109
 transform = Transform( 0.948841, 8.69483e-06, 0.315755, 0.0672756, 0.977033, -0.202189, -0.308505, 0.213088, 0.927048, -6.489, 7.663, -4.727 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/FadeOut = SubResource( 9 )
-anims/Intro = SubResource( 5 )
-"anims/Intro Debug" = SubResource( 6 )
+anims/FadeOut = SubResource( 5 )
+anims/Intro = SubResource( 6 )
+"anims/Intro Debug" = SubResource( 7 )
 
 [node name="Sound" type="Node" parent="."]
 
@@ -393,7 +397,7 @@ margin_bottom = 516.0
 [node name="Music" type="Label" parent="StartMenu/OptionsContainer/VBoxContainer"]
 margin_right = 338.0
 margin_bottom = 82.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "Music:"
 
 [node name="BasicContainer" type="MarginContainer" parent="StartMenu"]
@@ -417,7 +421,7 @@ margin_bottom = 243.0
 margin_right = 245.0
 margin_bottom = 88.0
 focus_neighbour_bottom = NodePath("../Options")
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "Start"
 flat = true
 align = 0
@@ -430,7 +434,7 @@ margin_top = 92.0
 margin_right = 245.0
 margin_bottom = 180.0
 focus_neighbour_top = NodePath("../Start")
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "Options"
 flat = true
 align = 0
@@ -440,5 +444,5 @@ __meta__ = {
 
 [node name="SeatTemp" type="CSGBox" parent="."]
 transform = Transform( 0.242795, 0, -0.0595868, 0, 0.25, 0, 0.0595868, 0, 0.242795, -1.32534, 4.15795, -0.408225 )
-material = SubResource( 8 )
+material = SubResource( 9 )
 [connection signal="pressed" from="StartMenu/BasicContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
