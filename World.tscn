@@ -280,8 +280,8 @@ transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0534947, 3.98004, 
 [node name="Campfire" type="OmniLight" parent="Environment/Log"]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0.213979, 2.72489, 0.366189 )
 light_color = Color( 0.627451, 0.301961, 0.0156863, 1 )
-light_energy = 1.97
-omni_range = 20.0
+light_energy = 2.0
+omni_range = 25.0
 omni_attenuation = 3.36358
 script = ExtResource( 6 )
 
@@ -294,23 +294,24 @@ transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 7.95847, 6.97274, -5.
 transform = Transform( 0.206862, 0, 0.455201, -0.028503, 0.748528, 0.0129529, -0.454308, -0.0469623, 0.206456, 9.94908, 6.41018, -14.6991 )
 
 [node name="PineTree2" parent="Environment/Trees" instance=ExtResource( 7 )]
-transform = Transform( 0.475763, -0.0174081, 0.375896, 0.0110458, 0.749798, 0.00872719, -0.275731, 0, 0.648942, -6.93606, 6.46252, -5.52286 )
+transform = Transform( 0.475763, -0.0174081, 0.375896, 0.0110458, 0.749798, 0.00872719, -0.275731, 0, 0.648942, -6.93606, 6.58554, -5.52286 )
 
 [node name="PineTree6" parent="Environment/Trees" instance=ExtResource( 7 )]
-transform = Transform( -0.000373849, -0.0297091, -0.626275, 0.00776483, 0.617161, -0.0301479, 0.386922, -0.012414, -1.02033e-07, 6.333, 6.452, 3.707 )
+transform = Transform( -0.000373849, -0.0297091, -0.626275, 0.00776483, 0.617161, -0.0301479, 0.386922, -0.012414, -1.02033e-07, 6.333, 6.70434, 3.707 )
 
 [node name="PineTree3" parent="Environment/Trees" instance=ExtResource( 7 )]
-transform = Transform( 0.399809, -0.0262273, 0.447001, 0.0650175, 0.843662, -0.0334884, -0.442635, 0.100234, 0.398834, -9.49687, 6.46252, -2.18324 )
+transform = Transform( 0.399809, -0.0262273, 0.447001, 0.0650175, 0.843662, -0.0334884, -0.442635, 0.100234, 0.398834, -9.49687, 7.01127, -2.18324 )
 
 [node name="PineTree4" parent="Environment/Trees" instance=ExtResource( 7 )]
-transform = Transform( 0.399809, -0.0262273, 0.447001, 0.0650175, 0.843662, -0.0334884, -0.442635, 0.100234, 0.398834, -12.1262, 6.00222, -13.3216 )
+transform = Transform( 0.399809, -0.0262273, 0.447001, 0.0650175, 0.843662, -0.0334884, -0.442635, 0.100234, 0.398834, -12.1262, 6.03799, -13.3216 )
 
 [node name="Landscape" parent="Environment" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -4.01326, 0 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="Environment"]
-transform = Transform( 1, 0, 0, 0, 0.995341, -0.0964189, 0, 0.0964189, 0.995341, 0, 7.78061, -16.6294 )
+transform = Transform( 1, 0, 0, 0, -0.649369, 0.760474, 0, -0.760474, -0.649369, 0, 7.78061, -16.6294 )
 light_color = Color( 0.713726, 0.866667, 0.847059, 1 )
-light_energy = 0.05
+light_energy = 0.1
 
 [node name="Fireflies" type="Spatial" parent="Environment"]
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Spaceman/Material_001.material" type="Material" id=1]
 [ext_resource path="res://Spaceman/Material_002.material" type="Material" id=2]
 [ext_resource path="res://Spaceman/Spaceman.cs" type="Script" id=3]
+[ext_resource path="res://Fishing Pole/FishingPole.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Icosphere"
@@ -316,6 +317,30 @@ tracks/15/loop_wrap = true
 tracks/15/imported = true
 tracks/15/enabled = true
 tracks/15/keys = PoolRealArray( 0, 1, 0, 0, 0, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1, 0.2, 1, 0, 0, 0, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1, 0.266667, 1, -2.93672e-09, -0.0117617, 0.0269658, -4.47035e-08, -1.74363e-09, -3.32744e-08, 1, 1, 1, 1, 0.333333, 1, -9.36512e-09, -0.0375077, 0.0859932, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1, 0.4, 1, -1.30307e-08, -0.0554743, 0.127185, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1, 0.466667, 1, -1.08651e-08, -0.0489915, 0.112322, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1, 0.533333, 1, -4.5754e-09, -0.0238012, 0.0545685, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1, 0.6, 1, -8.13865e-11, -0.00361184, 0.00828081, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1, 1, 1, 0, 0, 0, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1, 1.06667, 1, -1.75619e-09, -0.00703362, 0.0161259, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1, 1.13333, 1, -1.15728e-08, -0.0463497, 0.106265, 1.49012e-08, 1.74363e-09, 3.32744e-08, 1, 1, 1, 1, 1.2, 1, -2.38211e-08, -0.0954046, 0.218733, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1, 1.26667, 1, -2.53084e-08, -0.112026, 0.25684, 1.49012e-08, 1.74363e-09, 3.32744e-08, 1, 1, 1, 1, 1.33333, 1, -2.37591e-08, -0.105821, 0.242614, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1, 1.4, 1, -1.98329e-08, -0.0900963, 0.206562, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1, 1.46667, 1, -1.49354e-08, -0.0664462, 0.15234, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1, 1.6, 1, -1.28141e-09, -0.0117615, 0.0269654, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1, 1.66667, 1, 0, 0, 0, -5.06289e-15, -1.19148e-08, 2.73169e-08, 1, 1, 1, 1 )
+tracks/16/type = "value"
+tracks/16/path = NodePath("RightHand:translation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -1.07429, -0.989584, 0.557147 ), Vector3( -1.07429, -0.811711, 0.748866 ), Vector3( -1.07429, -1.01342, 0.0976781 ), Vector3( -1.07429, -1.07367, -0.419979 ), Vector3( -1.07429, -0.874268, -0.569741 ), Vector3( -1.07429, -0.866616, -0.718468 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("RightHand:rotation_degrees")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -36.398, 0, 0 ), Vector3( -52.288, 0, 0 ), Vector3( -4.34118, 0, 0 ), Vector3( 18.9392, 0, 0 ), Vector3( 13.7077, 0, 0 ), Vector3( 26.3292, 0, 0 ) ]
+}
 
 [sub_resource type="CapsuleShape" id=5]
 height = 2.8
@@ -424,7 +449,13 @@ transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -0.3
 shape = SubResource( 5 )
 
 [node name="Flashlight" type="SpotLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -1, -3.25841e-07, 0, 3.25841e-07, -1, 0, 2.01746, 1.21776 )
+transform = Transform( 1, 0, 0, 0, -0.993907, 0.11022, 0, -0.11022, -0.993907, 0, 2.01746, 1.21776 )
 shadow_enabled = true
-spot_range = 8.0
+spot_range = 15.0
 spot_angle = 35.0
+
+[node name="RightHand" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.989453, -0.144854, 0, 0.144854, 0.989453, -1.07429, -0.901903, -0.352414 )
+
+[node name="FishingPole" parent="RightHand" instance=ExtResource( 4 )]
+transform = Transform( -5.08585e-08, 0.0265014, -0.298827, 0.0814624, 0.287599, 0.0255056, 0.288728, -0.0811439, -0.00719627, 0, -0.0766488, 0.161586 )
