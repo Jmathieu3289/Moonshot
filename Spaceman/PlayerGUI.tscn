@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Controller/buttonX.png" type="Texture" id=1]
+[ext_resource path="res://Controller/buttonA.png" type="Texture" id=2]
+[ext_resource path="res://Controller/buttonB.png" type="Texture" id=3]
+[ext_resource path="res://Controller/buttonY.png" type="Texture" id=4]
+[ext_resource path="res://Spaceman/PlayerGUI.cs" type="Script" id=5]
+
+[node name="PlayerGUI" type="Control"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1920.0
+margin_top = -1080.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContextPress" type="CenterContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="HBoxContainer" parent="ContextPress"]
+margin_left = 755.0
+margin_right = 1165.0
+margin_bottom = 50.0
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="ContextPress/Control"]
+margin_right = 127.0
+margin_bottom = 50.0
+
+[node name="ButtonX" type="TextureRect" parent="ContextPress/Control/VBoxContainer2"]
+margin_right = 50.0
+margin_bottom = 50.0
+texture = ExtResource( 1 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ContextPress/Control/VBoxContainer2"]
+margin_left = 54.0
+margin_top = 18.0
+margin_right = 127.0
+margin_bottom = 32.0
+text = "Check Note"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ContextPress/Control"]
+margin_left = 131.0
+margin_right = 246.0
+margin_bottom = 50.0
+
+[node name="ButtonY" type="TextureRect" parent="ContextPress/Control/HBoxContainer2"]
+margin_right = 50.0
+margin_bottom = 50.0
+texture = ExtResource( 4 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ContextPress/Control/HBoxContainer2"]
+margin_left = 54.0
+margin_top = 18.0
+margin_right = 115.0
+margin_bottom = 32.0
+text = "Flashlight"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ContextPress/Control"]
+margin_left = 250.0
+margin_right = 304.0
+margin_bottom = 50.0
+alignment = 1
+
+[node name="ButtonA" type="TextureRect" parent="ContextPress/Control/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="Message" type="Label" parent="ContextPress/Control/HBoxContainer"]
+margin_left = 54.0
+margin_top = 18.0
+margin_right = 54.0
+margin_bottom = 32.0
+
+[node name="VBoxContainer3" type="HBoxContainer" parent="ContextPress/Control"]
+margin_left = 308.0
+margin_right = 410.0
+margin_bottom = 50.0
+
+[node name="ButtonB" type="TextureRect" parent="ContextPress/Control/VBoxContainer3"]
+margin_right = 50.0
+margin_bottom = 50.0
+texture = ExtResource( 3 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ContextPress/Control/VBoxContainer3"]
+margin_left = 54.0
+margin_top = 18.0
+margin_right = 102.0
+margin_bottom = 32.0
+text = "Camera"

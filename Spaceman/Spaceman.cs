@@ -11,18 +11,36 @@ public class Spaceman : KinematicBody
         Walking
     }
 
+    public enum HeldItem {
+        None,
+        Flashlight,
+        Camera
+    }
+
     private State _state = State.Uncontrollable;
+    private HeldItem _heldItem = HeldItem.None;
+
+    private Spatial _flashLight;
+    private SpaceCamera _camera;
 
     AnimationPlayer animationPlayer;
+    PlayerGUI playerGUI;
 
     Vector3 velocity;
-    float speed = 0.5f;
+
+    bool gettingOutFlashlight = false;
+    bool gettingOutCamera = false;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         animationPlayer.Play("Sitting");
+        playerGUI = GetNode<PlayerGUI>("PlayerGUI");
+        playerGUI.Hide();
+
+        _flashLight = GetNode<Spatial>("Armature/Skeleton/BoneAttachment/Flashlight");
+        _camera = GetNode<SpaceCamera>("Armature/Skeleton/BoneAttachment/Camera");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -63,37 +81,134 @@ public class Spaceman : KinematicBody
         } else {
             setState(State.Idle);
         }
+        if (Input.IsActionJustPressed("flashlight")) {
+            ToggleFlashlight();
+        }
+        if (Input.IsActionJustPressed("camera")) {
+            ToggleCamera();
+        }
+        if (Input.IsActionJustPressed("aim"))
+        {
+            _camera.StartAim();
+            playerGUI.ShowMessage("Take Picture");
+        }
+        if (Input.IsActionJustReleased("aim"))
+        {
+            _camera.EndAim();
+            playerGUI.ShowMessage("");
+        }
+        if (Input.IsActionPressed("zoom_in"))
+        {
+            _camera.ZoomIn();
+        }
+        if (Input.IsActionPressed("zoom_out"))
+        {
+            _camera.ZoomOut();
+        }
+    }
+
+    private void ToggleFlashlight()
+    {
+        if (_heldItem == HeldItem.None) {
+            _heldItem = HeldItem.Flashlight;
+            _flashLight.Visible = true;
+            setState(State.Uncontrollable);
+            animationPlayer.Play("Retrieve Item");
+        } else if (_heldItem != HeldItem.Flashlight) {
+            gettingOutFlashlight = true;
+            _heldItem = HeldItem.None;
+            _camera.Visible = false;
+            setState(State.Uncontrollable);
+            animationPlayer.PlayBackwards("Retrieve Item");
+        } else {
+            _heldItem = HeldItem.None;
+            _flashLight.Visible = false;
+            setState(State.Uncontrollable);
+            animationPlayer.PlayBackwards("Retrieve Item");
+        }
+    }
+
+    private void ToggleCamera()
+    {
+        if (_heldItem == HeldItem.None) {
+            _heldItem = HeldItem.Camera;
+            _camera.Visible = true;
+            setState(State.Uncontrollable);
+            animationPlayer.Play("Retrieve Item");
+        } else if (_heldItem != HeldItem.Camera) {
+            gettingOutCamera = true;
+            _heldItem = HeldItem.None;
+            _flashLight.Visible = false;
+            setState(State.Uncontrollable);
+            animationPlayer.PlayBackwards("Retrieve Item");
+        } else {
+            _heldItem = HeldItem.None;
+            _camera.Visible = false;
+            setState(State.Uncontrollable);
+            animationPlayer.PlayBackwards("Retrieve Item");
+        }
+    }
+
+    private void _on_AnimationPlayer_animation_finished(String animationName) 
+    {
+        switch(animationName) 
+        {
+            case "Retrieve Item":
+                setState(State.Idle);
+                if (gettingOutCamera)
+                {
+                    gettingOutCamera = false;
+                    ToggleCamera();
+                }
+                if (gettingOutFlashlight)
+                {
+                    gettingOutFlashlight = false;
+                    ToggleFlashlight();
+                }
+                break;
+        }
     }
 
     public override void _PhysicsProcess(float delta)
     {
-        MoveAndSlideWithSnap(velocity, Vector3.Zero, Vector3.Up, true);
+        if (_state != State.Uncontrollable) {
+            MoveAndSlideWithSnap(velocity, Vector3.Zero, Vector3.Up, true);
+        }
     }
 
-    public void setState(State state) {
+    public void setState(State state) 
+    {
         if (this._state != state) {
             this._state = state;
 
             switch(state) {
                 case State.Idle:
-                    animationPlayer.Stop();
+                    animationPlayer.Play(_heldItem == HeldItem.None ? "Idle" : _heldItem == HeldItem.Flashlight ? "Idle Holding" : "Idle Camera");     
+                    playerGUI.Show();          
                     break;
                 case State.Walking:
-                    animationPlayer.Play("Walking");
+                    animationPlayer.Play(_heldItem == HeldItem.None ? "Walking": "Walking Holding");
+                    break;
+                case State.Uncontrollable:
+                    velocity = Vector3.Zero;
+                    playerGUI.Hide();
                     break;
             }
         }
     }
 
-    public void GiveControl() {
+    public void GiveControl() 
+    {
         if (this._state == State.Uncontrollable) {
-            this._state = State.Idle;
+            setState(State.Idle);
         }
     }
 
-    public void TakeControl() {
+    public void TakeControl() 
+    {
         if (this._state != State.Uncontrollable) {
-            this._state = State.Uncontrollable;
+            setState(State.Uncontrollable);
         }
     }
+
 }
